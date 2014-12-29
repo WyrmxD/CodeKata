@@ -1,0 +1,1 @@
+phpunit --bootstrap src/autoloader.php tests
