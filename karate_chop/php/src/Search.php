@@ -8,7 +8,8 @@ class Search {
 			return -1;
 		}
 
-		return self::binary_chop($needle, 0, $list_size-1, $number_list);
+		//return self::binary_chop($needle, 0, $list_size-1, $number_list);
+		return self::binary_chop_it($needle, $number_list);
 	}
 
 	private function binary_chop($needle, $first, $last, $number_list) {
@@ -27,6 +28,26 @@ class Search {
 		} else {
 			return -1;
 		}
+	}
+
+	private function binary_chop_it($needle, $number_list) {
+
+		$first = 0;
+		$last = count($number_list) -1;
+		$middle = round( $last - $first / 2, 0, PHP_ROUND_HALF_DOWN);
+
+		while ( $middle >= 0 && $middle <= $last) {
+			if($number_list[$middle] == $needle) {
+				return $middle;
+			} else if ($number_list[$middle] < $needle) {
+				$last = $middle - 1;
+			} else if ($number_list[$middle] > $needle) {
+				$first = $middle + 1;
+			}
+			$middle = round( $last - $first / 2, 0, PHP_ROUND_HALF_DOWN);
+		}
+
+		return -1;
 	}
 
 }
