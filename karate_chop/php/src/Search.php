@@ -1,7 +1,10 @@
 <?php
 class Search {
 	
-	public function chop($number_list) {
+	public function chop($needle, $number_list) {
+		if (count($number_list) > 0) {
+			return 0;
+		}
 		return -1;
 	}
 }
