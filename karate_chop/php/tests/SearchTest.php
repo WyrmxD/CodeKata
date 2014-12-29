@@ -16,4 +16,9 @@ class SearchTest extends PHPUnit_Framework_TestCase {
 		$number_list = array(1);
 		$this->assertEquals(-1, Search::chop(2, $number_list));
 	}
+
+	public function testChop_list_whit_two_elements_success() {
+		$number_list = array(1,2);
+		$this->assertEquals(1, Search::chop(2, $number_list));	
+	}
 }
