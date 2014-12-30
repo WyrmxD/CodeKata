@@ -28,7 +28,12 @@ class SearchTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function testChop_list_with_several_elemets() {
-		$number_list = array(1,2,3,4);
-		$this->assertEquals(3, Search::chop(4, $number_list));		
+		$number_list = array(1,2,3,4,6);
+		$this->assertEquals(3, Search::chop(4, $number_list));
+	}
+
+	public function testChop_list_with_several_elemets_fails() {
+		$number_list = array(1,2,3,4,6);
+		$this->assertEquals(-1, Search::chop(5, $number_list));		
 	}
 }
