@@ -18,7 +18,8 @@ class DataMunging {
 		foreach ($this->lines as $line) {
 			$line = preg_replace('/\s+/', ' ', $line);
 			$parsed_line = explode(" ", $line);
-			if (count($parsed_line) >= 4) {
+			
+			if ($this->valid_line($parsed_line)) {
 				$new_day = array('day' => intval($parsed_line[1]),
 					'max_temp' => intval($parsed_line[2]),
 					'min_temp' => intval($parsed_line[3]));
@@ -32,6 +33,10 @@ class DataMunging {
 
 	private function valid_day($day_int) {
 		return $day_int <= 31 && $day_int >= 1;
+	}
+
+	private function valid_line($parsed_line) {
+		return count($parsed_line) >= 4;
 	}
 
 	public function printMaxTemp() {
